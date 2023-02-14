@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>DOM Manipulation </title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <section>
+        <div id="container"></div>
+        <div id="btns-container">
+            <button id="change-color-btn">ChangeColor</button>
+            <button id="add-child-btn">AddChild</button>
+            <button id="remove-child-btn">RemoveChild</button>
+        </div>
+    </section>
+    <script>
+        // reactangle color changes
+        const colors = ["red", "Blue", "green", "orange", "pink", "Yellow",]
+        const color = document.getElementById("change-color-btn");
+        color.addEventListener("click", (e) => {
+
+            document.getElementById("container").style.backgroundColor = colors[getColors()];
+
+        });
+        function getColors() {
+            return Math.floor(Math.random() * colors.length);
+        }
+        // child rectangle created
+        const addChild = document.getElementById("add-child-btn");
+        var childDiv = document.createElement("div");
+        childDiv.style.cssText = "width:10em; height:10em; background:black;"
+        addChild.addEventListener("click", (e) => {
+            let squarecontainer = document.getElementById("container");
+            squarecontainer.appendChild(childDiv);
+        })
+        // removing childd square
+        const removeChild = document.getElementById("remove-child-btn");
+        removeChild.addEventListener("click", (e) => {
+            let squarecontainer = document.getElementById("container");
+            squarecontainer.removeChild(childDiv);
+        })
+
+    </script>
+</body>
+
+</html>
